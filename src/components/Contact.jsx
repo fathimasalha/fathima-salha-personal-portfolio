@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Phone, Send } from 'lucide-react';
+import { Mail, MapPin, Phone, Send, CheckCircle, X } from 'lucide-react';
+import { AnimatePresence } from 'framer-motion';
 import './Contact.css';
 
 const Contact = () => {
@@ -9,12 +10,34 @@ const Contact = () => {
         email: '',
         message: ''
     });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSubmitted, setIsSubmitted] = useState(false);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // In a real app, this would send an email or save to a db
-        alert("Message sent successfully! (Simulated)");
-        setFormData({ name: '', email: '', message: '' });
+        setIsSubmitting(true);
+
+        const GOOGLE_FORM_ACTION_URL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSfvxj8-wT0pCZ4334hYkPj7jPHJZp2R20TVE4svMsKpcIpqqA/formResponse";
+
+        const formDataToSubmit = new FormData();
+        formDataToSubmit.append('entry.1493265900', formData.name);
+        formDataToSubmit.append('entry.1530825852', formData.email);
+        formDataToSubmit.append('entry.1237069856', formData.message);
+
+        try {
+            await fetch(GOOGLE_FORM_ACTION_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: formDataToSubmit
+            });
+            setIsSubmitted(true);
+            setFormData({ name: '', email: '', message: '' });
+        } catch (error) {
+            console.error("Submission error:", error);
+            alert("Something went wrong. Please try again or email me directly.");
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const handleChange = (e) => {
@@ -124,12 +147,62 @@ const Contact = () => {
                                 ></textarea>
                             </div>
 
-                            <button type="submit" className="btn btn-primary submit-btn">
-                                Send Message <Send size={18} />
+                            <button
+                                type="submit"
+                                className="btn btn-primary submit-btn"
+                                disabled={isSubmitting}
+                            >
+                                {isSubmitting ? (
+                                    <>Sending... <motion.span
+                                        animate={{ rotate: 360 }}
+                                        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                                        style={{ display: 'inline-block', marginLeft: '8px' }}
+                                    >
+                                        <Send size={18} />
+                                    </motion.span></>
+                                ) : (
+                                    <>Send Message <Send size={18} /></>
+                                )}
                             </button>
                         </form>
                     </motion.div>
                 </div>
+
+                <AnimatePresence>
+                    {isSubmitted && (
+                        <motion.div
+                            className="success-overlay"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setIsSubmitted(false)}
+                        >
+                            <motion.div
+                                className="success-modal glass-panel"
+                                initial={{ scale: 0.8, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                                exit={{ scale: 0.8, opacity: 0 }}
+                                onClick={(e) => e.stopPropagation()}
+                            >
+                                <button className="close-btn" onClick={() => setIsSubmitted(false)}>
+                                    <X size={24} />
+                                </button>
+                                <div className="success-icon">
+                                    <CheckCircle size={60} />
+                                </div>
+                                <h3 className="gradient-text">Message Sent!</h3>
+                                <p>Thank you for reaching out. I'll get back to you as soon as possible.</p>
+                                <button
+                                    className="btn btn-primary"
+                                    onClick={() => setIsSubmitted(false)}
+                                    style={{ marginTop: '1rem', width: 'auto' }}
+                                >
+                                    Got it
+                                </button>
+                            </motion.div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
         </section>
     );
