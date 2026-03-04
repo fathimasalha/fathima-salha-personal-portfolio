@@ -48,6 +48,16 @@ const Navbar = () => {
                             </Link>
                         </li>
                     ))}
+                    <li>
+                        <a
+                            href="https://drive.google.com/file/d/1Mqesgnj1JaZjGAK-fbhkZO6Q-Ln_YmR2/view?usp=sharing"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="nav-item resume-nav-link"
+                        >
+                            Resume
+                        </a>
+                    </li>
                 </ul>
 
                 {/* Mobile Nav Toggle */}
@@ -77,6 +87,17 @@ const Navbar = () => {
                                 </Link>
                             </li>
                         ))}
+                        <li>
+                            <a
+                                href="https://drive.google.com/file/d/1Mqesgnj1JaZjGAK-fbhkZO6Q-Ln_YmR2/view?usp=sharing"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="nav-item resume-nav-link"
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                Resume
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
