@@ -67,7 +67,7 @@ const Hero = () => {
                                 Contact Me
                             </button>
                         </Link>
-                        <a href="https://drive.google.com/file/d/1Mqesgnj1JaZjGAK-fbhkZO6Q-Ln_YmR2/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                        <a href="https://drive.google.com/file/d/1yjE_ON3GtbPYYiRyL-GDbrcVkR6cTZy4/view?usp=drive_link" target="_blank" rel="noopener noreferrer">
                             <button className="btn btn-outline resume-btn">
                                 View Resume <FileText size={18} />
                             </button>

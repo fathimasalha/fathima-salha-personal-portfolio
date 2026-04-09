@@ -18,6 +18,7 @@ const Navbar = () => {
     const navLinks = [
         { name: 'Home', to: 'hero' },
         { name: 'Skills', to: 'skills' },
+        { name: 'Experience', to: 'experience' },
         { name: 'Certifications', to: 'certifications' },
         { name: 'Projects', to: 'projects' },
         { name: 'Services', to: 'services' },
@@ -50,7 +51,7 @@ const Navbar = () => {
                     ))}
                     <li>
                         <a
-                            href="https://drive.google.com/file/d/1Mqesgnj1JaZjGAK-fbhkZO6Q-Ln_YmR2/view?usp=sharing"
+                            href="https://drive.google.com/file/d/1yjE_ON3GtbPYYiRyL-GDbrcVkR6cTZy4/view?usp=drive_link"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="nav-item resume-nav-link"
@@ -89,7 +90,7 @@ const Navbar = () => {
                         ))}
                         <li>
                             <a
-                                href="https://drive.google.com/file/d/1Mqesgnj1JaZjGAK-fbhkZO6Q-Ln_YmR2/view?usp=sharing"
+                                href="https://drive.google.com/file/d/1yjE_ON3GtbPYYiRyL-GDbrcVkR6cTZy4/view?usp=drive_link"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="nav-item resume-nav-link"

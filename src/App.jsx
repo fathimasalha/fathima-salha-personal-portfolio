@@ -9,6 +9,8 @@ import Services from './components/Services';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 
+import Experience from './components/Experience';
+
 function App() {
     return (
         <div className="app">
@@ -17,6 +19,7 @@ function App() {
                 <Hero />
                 <About />
                 <Skills />
+                <Experience />
                 <Certifications />
                 <Projects />
                 <Services />
