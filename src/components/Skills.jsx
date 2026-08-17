@@ -79,7 +79,7 @@ const Skills = () => {
         }
     ];
 
-    // Scroll listener calculates active category based on sticky scroll progress
+    // Scroll listener updates active category as user scrolls through the section
     useEffect(() => {
         const handleScroll = () => {
             const wrapper = wrapperRef.current;
@@ -87,12 +87,13 @@ const Skills = () => {
 
             const rect = wrapper.getBoundingClientRect();
             const windowHeight = window.innerHeight;
+            const stickyTop = 75; // Header navbar offset
             const totalScrollable = rect.height - windowHeight;
 
             if (totalScrollable <= 0) return;
 
-            const scrolled = -rect.top;
-            const progress = scrolled / totalScrollable;
+            const scrolled = -rect.top + stickyTop;
+            const progress = Math.max(0, Math.min(1, scrolled / totalScrollable));
 
             if (progress < 0.35) {
                 setActiveIndex(0);
@@ -108,7 +109,7 @@ const Skills = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Smooth scroll to target position when clicking a tab
+    // Smooth scroll to corresponding category position on tab click
     const handleTabClick = (index) => {
         setActiveIndex(index);
         const wrapper = wrapperRef.current;
@@ -117,15 +118,14 @@ const Skills = () => {
         const rect = wrapper.getBoundingClientRect();
         const absoluteTop = window.scrollY + rect.top;
         const totalScrollable = rect.height - window.innerHeight;
+        const stickyTop = 75;
 
-        let targetY = absoluteTop;
-        if (index === 1) {
-            targetY = absoluteTop + totalScrollable * 0.5;
-        } else if (index === 2) {
-            targetY = absoluteTop + totalScrollable * 0.95;
-        }
+        let targetRatio = 0.02;
+        if (index === 1) targetRatio = 0.50;
+        if (index === 2) targetRatio = 0.88;
 
-        window.scrollTo({ top: targetY, behavior: 'smooth' });
+        const targetY = absoluteTop - stickyTop + (totalScrollable * targetRatio);
+        window.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
     };
 
     const currentCat = categories[activeIndex];
@@ -135,22 +135,27 @@ const Skills = () => {
             <div className="orb orb-1"></div>
             <div className="orb orb-2"></div>
 
-            {/* Sticky Wrapper provides scroll height for step progression */}
             <div className="skills-sticky-wrapper" ref={wrapperRef}>
                 <div className="skills-sticky-content">
                     <div className="container">
                         {/* Header Badge & Title */}
                         <motion.div
                             className="skills-header-block"
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 25 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5 }}
+                            viewport={{ once: true, amount: 0.2 }}
+                            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                         >
-                            <div className="skills-badge-tag">
+                            <motion.div 
+                                className="skills-badge-tag"
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.4 }}
+                            >
                                 <span className="star-icon">✦</span>
                                 <span>TECHNICAL EXPERTISE</span>
-                            </div>
+                            </motion.div>
                             <h2 className="section-title">
                                 Skills & <span className="gradient-text">Expertise</span>
                             </h2>
@@ -161,14 +166,16 @@ const Skills = () => {
                             {/* Category Selection Tabs */}
                             <div className="skills-tab-nav">
                                 {categories.map((cat, idx) => (
-                                    <button
+                                    <motion.button
                                         key={cat.id}
                                         className={`skills-tab-btn ${activeIndex === idx ? 'active' : ''}`}
                                         onClick={() => handleTabClick(idx)}
+                                        whileHover={{ scale: 1.05, y: -2 }}
+                                        whileTap={{ scale: 0.96 }}
                                     >
                                         <span className="tab-dot"></span>
                                         {cat.tabName}
-                                    </button>
+                                    </motion.button>
                                 ))}
                             </div>
                         </motion.div>
@@ -176,18 +183,24 @@ const Skills = () => {
                         {/* Main 2-Column Showcase Grid */}
                         <div className="skills-showcase-grid">
                             {/* Left Column: Title & Progress Bars */}
-                            <div className="skills-left-column">
+                            <motion.div 
+                                className="skills-left-column"
+                                initial={{ opacity: 0, x: -30 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, amount: 0.2 }}
+                                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                            >
                                 <div className="skills-left-meta">
                                     <span className="skills-meta-subtitle">TECHNICAL SKILLS</span>
 
-                                    <AnimatePresence mode="wait">
+                                    <AnimatePresence mode="popLayout">
                                         <motion.h3
                                             key={currentCat.id}
                                             className="skills-main-title"
-                                            initial={{ opacity: 0, y: 12 }}
+                                            initial={{ opacity: 0, y: 10 }}
                                             animate={{ opacity: 1, y: 0 }}
-                                            exit={{ opacity: 0, y: -12 }}
-                                            transition={{ duration: 0.3 }}
+                                            exit={{ opacity: 0, y: -10 }}
+                                            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                                         >
                                             {currentCat.shortTitle}
                                         </motion.h3>
@@ -196,13 +209,13 @@ const Skills = () => {
 
                                 {/* Skill Progress Bars List */}
                                 <div className="skills-progress-list">
-                                    <AnimatePresence mode="wait">
+                                    <AnimatePresence mode="popLayout">
                                         <motion.div
                                             key={currentCat.id}
-                                            initial={{ opacity: 0, y: 10 }}
+                                            initial={{ opacity: 0, y: 12 }}
                                             animate={{ opacity: 1, y: 0 }}
-                                            exit={{ opacity: 0, y: -10 }}
-                                            transition={{ duration: 0.3 }}
+                                            exit={{ opacity: 0, y: -12 }}
+                                            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                                             className="progress-items-wrapper"
                                         >
                                             {currentCat.progressSkills.map((skill, pIdx) => (
@@ -213,10 +226,12 @@ const Skills = () => {
                                                     </div>
                                                     <div className="progress-track">
                                                         <motion.div
+                                                            key={`${currentCat.id}-${pIdx}`}
                                                             className="progress-fill"
-                                                            initial={{ width: 0 }}
-                                                            animate={{ width: `${skill.percent}%` }}
-                                                            transition={{ duration: 0.65, delay: pIdx * 0.06, ease: 'easeOut' }}
+                                                            initial={{ width: '0%' }}
+                                                            whileInView={{ width: `${skill.percent}%` }}
+                                                            viewport={{ once: true, amount: 0.2 }}
+                                                            transition={{ duration: 0.75, delay: pIdx * 0.08, ease: [0.16, 1, 0.3, 1] }}
                                                         />
                                                     </div>
                                                 </div>
@@ -224,10 +239,16 @@ const Skills = () => {
                                         </motion.div>
                                     </AnimatePresence>
                                 </div>
-                            </div>
+                            </motion.div>
 
                             {/* Right Column: macOS IDE Window Frame Showcase */}
-                            <div className="skills-right-column">
+                            <motion.div 
+                                className="skills-right-column"
+                                initial={{ opacity: 0, x: 30, y: 20 }}
+                                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                                viewport={{ once: true, amount: 0.2 }}
+                                transition={{ duration: 0.65, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                            >
                                 <div className="skills-window-frame glass-panel">
                                     {/* Window Titlebar */}
                                     <div className="window-header">
@@ -237,7 +258,7 @@ const Skills = () => {
                                             <span className="control-dot dot-green"></span>
                                         </div>
                                         <div className="window-title-text">
-                                            <AnimatePresence mode="wait">
+                                            <AnimatePresence mode="popLayout">
                                                 <motion.span
                                                     key={currentCat.id}
                                                     initial={{ opacity: 0 }}
@@ -254,13 +275,13 @@ const Skills = () => {
 
                                     {/* Window Body */}
                                     <div className="window-body">
-                                        <AnimatePresence mode="wait">
+                                        <AnimatePresence mode="popLayout">
                                             <motion.div
                                                 key={currentCat.id}
-                                                initial={{ opacity: 0, scale: 0.96 }}
-                                                animate={{ opacity: 1, scale: 1 }}
-                                                exit={{ opacity: 0, scale: 0.96 }}
-                                                transition={{ duration: 0.3 }}
+                                                initial={{ opacity: 0, scale: 0.96, y: 8 }}
+                                                animate={{ opacity: 1, scale: 1, y: 0 }}
+                                                exit={{ opacity: 0, scale: 0.96, y: -8 }}
+                                                transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                                                 className="window-content-inner"
                                             >
                                                 {/* Subhead Tag */}
@@ -272,12 +293,13 @@ const Skills = () => {
                                                 <div className="window-skills-grid">
                                                     {currentCat.iconSkills.map((item, iIdx) => (
                                                         <motion.div
-                                                            key={iIdx}
+                                                            key={`${currentCat.id}-${iIdx}`}
                                                             className="window-skill-card"
-                                                            whileHover={{ y: -4, scale: 1.03 }}
-                                                            initial={{ opacity: 0, y: 10 }}
-                                                            animate={{ opacity: 1, y: 0 }}
-                                                            transition={{ delay: iIdx * 0.04, duration: 0.25 }}
+                                                            whileHover={{ y: -5, scale: 1.04 }}
+                                                            initial={{ opacity: 0, y: 15, scale: 0.92 }}
+                                                            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                                                            viewport={{ once: true, amount: 0.2 }}
+                                                            transition={{ delay: iIdx * 0.05, duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                                                         >
                                                             <div
                                                                 className="window-skill-icon-wrapper"
@@ -308,7 +330,7 @@ const Skills = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         </div>
                     </div>
                 </div>

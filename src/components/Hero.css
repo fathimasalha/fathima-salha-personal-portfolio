@@ -542,12 +542,13 @@
 
 @media (max-width: 768px) {
     .home-hero-wrapper {
-        padding-top: 90px;
+        padding-top: 115px;
         padding-bottom: 40px;
     }
 
     .hero-intro-subtitle-wrapper {
-        margin-bottom: 1.5rem;
+        margin-top: 1.25rem;
+        margin-bottom: 1.75rem;
         max-width: 100%;
         flex-wrap: wrap;
         justify-content: center;
@@ -686,12 +687,13 @@
     }
 
     .home-hero-wrapper {
-        padding-top: 75px;
+        padding-top: 110px;
         padding-bottom: 30px;
     }
 
     .hero-intro-subtitle-wrapper {
-        margin-bottom: 1rem;
+        margin-top: 1.5rem;
+        margin-bottom: 1.25rem;
         gap: 6px;
     }
 

@@ -180,6 +180,7 @@ console.log("Ready to collaborate on high-impact projects! 🚀");`;
                 viewport={{ once: true, amount: 0.1 }}
                 transition={{ 
                     duration: 0.5, 
+                    delay: index * 0.08,
                     ease: [0.16, 1, 0.3, 1] 
                 }}
                 whileHover={{ 
@@ -226,143 +227,151 @@ console.log("Ready to collaborate on high-impact projects! 🚀");`;
         <section id="about" className="section about-section">
             <div className="container">
                 {/* Top Section: Left column interactive code terminal + Right column background-blended photo */}
-                <div className="about-showcase-grid">
-                    {/* Left Column: Code Based Enhanced About Card */}
-                    <motion.div
-                        className="about-content-column"
-                        initial={{ opacity: 0, x: -40 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.7 }}
-                    >
-                        <div className="about-badge-tag">
-                            <Sparkles size={16} className="badge-icon" />
-                            <span>KNOW ABOUT ME</span>
-                        </div>
+                <div className="showcase-container">
+                    <div className="about-showcase-grid">
+                        {/* Left Column: Code Based Enhanced About Card */}
+                        <motion.div
+                            className="about-content-column"
+                            initial={{ opacity: 0, x: -40 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.7 }}
+                        >
+                            <div className="about-badge-tag">
+                                <Sparkles size={16} className="badge-icon" />
+                                <span>KNOW ABOUT ME</span>
+                            </div>
 
-                        {/* Enhanced IDE Code Terminal Card */}
-                        <div className="about-code-terminal glass-panel">
-                            <div className="terminal-header">
-                                <div className="terminal-dots">
-                                    <span className="dot dot-red"></span>
-                                    <span className="dot dot-yellow"></span>
-                                    <span className="dot dot-green"></span>
+                            {/* Enhanced IDE Code Terminal Card */}
+                            <div className="about-code-terminal glass-panel">
+                                <div className="terminal-header">
+                                    <div className="terminal-dots">
+                                        <span className="dot dot-red"></span>
+                                        <span className="dot dot-yellow"></span>
+                                        <span className="dot dot-green"></span>
+                                    </div>
+                                    <div className="terminal-filename">
+                                        <Terminal size={14} />
+                                        <span>developer.js</span>
+                                    </div>
                                 </div>
-                                <div className="terminal-filename">
-                                    <Terminal size={14} />
-                                    <span>developer.js</span>
+                                <div className="terminal-body">
+                                    <pre>
+                                        <code>{typingText}<span className="typing-cursor">|</span></code>
+                                    </pre>
                                 </div>
                             </div>
-                            <div className="terminal-body">
-                                <pre>
-                                    <code>{typingText}<span className="typing-cursor">|</span></code>
-                                </pre>
+                        </motion.div>
+
+                        {/* Right Column: Background-blended Photo */}
+                        <motion.div
+                            className="about-image-column"
+                            initial={{ opacity: 0, x: 40 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.7, delay: 0.2 }}
+                        >
+                            <div className="about-photo-wrapper">
+                                {/* Organic Radiant Neon Splash & Ambient Aura behind/under photo */}
+                                <div className="about-neon-splash"></div>
+                                <div className="about-photo-glow"></div>
+                                <div className="about-neon-ground-light"></div>
+
+                                <img
+                                    src="/profile-photo-1-nobg.png"
+                                    alt="Fathima Salha"
+                                    className="about-blended-photo"
+                                />
+
+                                {/* Smooth background blend fade */}
+                                <div className="about-photo-bottom-fade"></div>
                             </div>
-                        </div>
-                    </motion.div>
-
-                    {/* Right Column: Background-blended Photo */}
-                    <motion.div
-                        className="about-image-column"
-                        initial={{ opacity: 0, x: 40 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.7, delay: 0.2 }}
-                    >
-                        <div className="about-photo-wrapper">
-                            {/* Organic Radiant Neon Splash & Ambient Aura behind/under photo */}
-                            <div className="about-neon-splash"></div>
-                            <div className="about-photo-glow"></div>
-                            <div className="about-neon-ground-light"></div>
-
-                            <img
-                                src="/profile-photo-1-nobg.png"
-                                alt="Fathima Salha"
-                                className="about-blended-photo"
-                            />
-
-                            {/* Smooth background blend fade */}
-                            <div className="about-photo-bottom-fade"></div>
-                        </div>
-                    </motion.div>
+                        </motion.div>
+                    </div>
                 </div>
 
                 {/* Poloriv-style Better Digital Journeys Section */}
                 <div className="poloriv-journey-section">
                     <div className="poloriv-services-stack">
                         {services.map((service, index) => (
-                            <motion.div
+                            <div
                                 key={index}
-                                className="poloriv-row-card"
+                                className="poloriv-card-sticky-wrapper"
                                 style={{
                                     '--card-index': index,
                                     zIndex: index + 1
                                 }}
-                                initial={{ opacity: 0, y: 50 }}
-                                whileInView={{ 
-                                    opacity: 1, 
-                                    y: 0 
-                                }}
-                                viewport={{ once: true, amount: 0.12 }}
-                                transition={{
-                                    duration: 0.7,
-                                    ease: [0.16, 1, 0.3, 1]
-                                }}
-                                whileHover={{ 
-                                    y: -6, 
-                                    transition: { duration: 0.3 } 
-                                }}
-                                whileTap={{ scale: 0.99 }}
                             >
-                                {/* Left Side: Details & Offering Information */}
-                                <div className="poloriv-row-left">
-                                    <div className="poloriv-card-top-meta">
-                                        <div className="poloriv-num-box">
-                                            <span className="poloriv-star-icon">✦</span>
-                                            <span className="poloriv-number">{service.number}</span>
+                                <motion.div
+                                    className="poloriv-row-card"
+                                    initial={{ opacity: 0, y: 40, scale: 0.98 }}
+                                    whileInView={{ 
+                                        opacity: 1, 
+                                        y: 0,
+                                        scale: 1
+                                    }}
+                                    viewport={{ once: true, amount: 0.15 }}
+                                    transition={{
+                                        duration: 0.6,
+                                        ease: [0.16, 1, 0.3, 1]
+                                    }}
+                                    whileHover={{ 
+                                        y: -6, 
+                                        scale: 1.005,
+                                        transition: { duration: 0.3 } 
+                                    }}
+                                    whileTap={{ scale: 0.99 }}
+                                >
+                                    {/* Left Side: Details & Offering Information */}
+                                    <div className="poloriv-row-left">
+                                        <div className="poloriv-card-top-meta">
+                                            <div className="poloriv-num-box">
+                                                <span className="poloriv-star-icon">✦</span>
+                                                <span className="poloriv-number">{service.number}</span>
+                                            </div>
+                                            <span className="poloriv-project-count">{service.projects}</span>
                                         </div>
-                                        <span className="poloriv-project-count">{service.projects}</span>
-                                    </div>
 
-                                    <div className="poloriv-row-title-wrap">
-                                        <h3 className="poloriv-row-title">{service.title}</h3>
-                                        <p className="poloriv-row-subtitle">{service.subtitle}</p>
-                                    </div>
+                                        <div className="poloriv-row-title-wrap">
+                                            <h3 className="poloriv-row-title">{service.title}</h3>
+                                            <p className="poloriv-row-subtitle">{service.subtitle}</p>
+                                        </div>
 
-                                    {/* Interactive Category Tags */}
-                                    <div className="poloriv-tags-wrapper">
-                                        {service.tags.map((tag, tIdx) => (
-                                            <span key={tIdx} className="poloriv-service-tag">{tag}</span>
-                                        ))}
-                                    </div>
+                                        {/* Interactive Category Tags */}
+                                        <div className="poloriv-tags-wrapper">
+                                            {service.tags.map((tag, tIdx) => (
+                                                <span key={tIdx} className="poloriv-service-tag">{tag}</span>
+                                            ))}
+                                        </div>
 
-                                    {/* Action Count Row */}
-                                    <div className="poloriv-row-action">
-                                        <div className="poloriv-count-badge">
-                                            <span className="poloriv-count-value">{service.projects}</span>
+                                        {/* Action Count Row */}
+                                        <div className="poloriv-row-action">
+                                            <div className="poloriv-count-badge">
+                                                <span className="poloriv-count-value">{service.projects}</span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                {/* Right Side: Visual Showcase Image with Corner Plus Marks & Poloriv Parallax Reveal */}
-                                <div className="poloriv-row-right">
-                                    <div className="poloriv-row-image-wrap">
-                                        <img
-                                            src={service.image}
-                                            alt={service.title}
-                                            className="poloriv-row-img"
-                                            loading="lazy"
-                                        />
-                                        <div className="poloriv-img-overlay"></div>
+                                    {/* Right Side: Visual Showcase Image with Corner Plus Marks & Poloriv Parallax Reveal */}
+                                    <div className="poloriv-row-right">
+                                        <div className="poloriv-row-image-wrap">
+                                            <img
+                                                src={service.image}
+                                                alt={service.title}
+                                                className="poloriv-row-img"
+                                                loading="lazy"
+                                            />
+                                            <div className="poloriv-img-overlay"></div>
 
-                                        {/* Poloriv Corner Plus Marks */}
-                                        <div className="poloriv-corner-plus top-left">+</div>
-                                        <div className="poloriv-corner-plus top-right">+</div>
-                                        <div className="poloriv-corner-plus bottom-left">+</div>
-                                        <div className="poloriv-corner-plus bottom-right">+</div>
+                                            {/* Poloriv Corner Plus Marks */}
+                                            <div className="poloriv-corner-plus top-left">+</div>
+                                            <div className="poloriv-corner-plus top-right">+</div>
+                                            <div className="poloriv-corner-plus bottom-left">+</div>
+                                            <div className="poloriv-corner-plus bottom-right">+</div>
+                                        </div>
                                     </div>
-                                </div>
-                            </motion.div>
+                                </motion.div>
+                            </div>
                         ))}
                     </div>
                 </div>
