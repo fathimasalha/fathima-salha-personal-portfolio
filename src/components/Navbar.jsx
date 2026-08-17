@@ -51,7 +51,7 @@ const Navbar = () => {
                     ))}
                     <li>
                         <a
-                            href="https://drive.google.com/file/d/1yjE_ON3GtbPYYiRyL-GDbrcVkR6cTZy4/view?usp=drive_link"
+                            href="https://drive.google.com/file/d/1x_3ctaR550p6J9vrRXzAZYixCWk27Bkp/view?usp=sharing"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="nav-item resume-nav-link"
@@ -68,6 +68,12 @@ const Navbar = () => {
                 >
                     {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
+
+                {/* Mobile Nav Backdrop Overlay */}
+                <div
+                    className={`mobile-nav-backdrop ${isMenuOpen ? 'open' : ''}`}
+                    onClick={() => setIsMenuOpen(false)}
+                />
 
                 {/* Mobile Nav */}
                 <div className={`mobile-nav glass-panel ${isMenuOpen ? 'open' : ''}`}>
@@ -90,7 +96,7 @@ const Navbar = () => {
                         ))}
                         <li>
                             <a
-                                href="https://drive.google.com/file/d/1yjE_ON3GtbPYYiRyL-GDbrcVkR6cTZy4/view?usp=drive_link"
+                                href="https://drive.google.com/file/d/1x_3ctaR550p6J9vrRXzAZYixCWk27Bkp/view?usp=sharing"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="nav-item resume-nav-link"

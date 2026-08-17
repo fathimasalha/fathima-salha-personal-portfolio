@@ -3,9 +3,9 @@ import { Github, Linkedin, Heart } from 'lucide-react';
 const Footer = () => {
     return (
         <footer style={{
-            borderTop: '1px solid rgba(255,255,255,0.05)',
+            borderTop: '1px solid rgba(0,0,0,0.06)',
             padding: '2rem 0',
-            background: 'var(--bg-primary)',
+            background: 'var(--primary)',
             textAlign: 'center'
         }}>
             <div className="container">
@@ -21,10 +21,10 @@ const Footer = () => {
                     </div>
 
                     <div style={{ display: 'flex', gap: '1rem', color: 'var(--text-secondary)' }}>
-                        <a href="https://github.com/fathimasalha" target="_blank" rel="noopener noreferrer" style={{ transition: '0.2s', ':hover': { color: '#06b6d4' } }}>
+                        <a href="https://github.com/fathimasalha" target="_blank" rel="noopener noreferrer" style={{ transition: '0.2s', color: 'var(--text-secondary)' }}>
                             <Github size={20} />
                         </a>
-                        <a href="https://www.linkedin.com/in/fathimasalha/" target="_blank" rel="noopener noreferrer" style={{ transition: '0.2s', ':hover': { color: '#8b5cf6' } }}>
+                        <a href="https://www.linkedin.com/in/fathimasalha/" target="_blank" rel="noopener noreferrer" style={{ transition: '0.2s', color: 'var(--text-secondary)' }}>
                             <Linkedin size={20} />
                         </a>
                     </div>
@@ -39,7 +39,7 @@ const Footer = () => {
                     alignItems: 'center',
                     gap: '0.5rem'
                 }}>
-                    &copy; {new Date().getFullYear()} Fathima Salha N K. Designed with logic and coffee.
+                    &copy; {new Date().getFullYear()} Fathima Salha N K
                 </div>
             </div>
         </footer>

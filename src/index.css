@@ -1,20 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Syne:wght@700;800&family=Oswald:wght@600;700&family=Antonio:wght@700&display=swap');
 
 :root {
-  --bg-primary: #0a0a0a;
-  --bg-secondary: #121212;
-  --bg-tertiary: rgba(255, 255, 255, 0.03);
+  --primary: #fbfbfd;
+  --text-color: #181818;
+  --light-grey: #fafafa;
+  --link-bg-grey: #f1f1f1;
+  --secondary: #fd4ecd;
+  --light-blue-bg: #f8f8fa;
+  --gradient-color-1: #ff6faa;
+  --gradient-color-2: #b846ba;
+  --gradient-color-3: #143d7a;
+  --notification-bg: #001b38;
+  --dim-grey: #c5c5c5;
+  --misty-rose: #ffdede;
+  --bg-grey: #d4d4d4;
 
-  --text-primary: #f3f4f6;
-  --text-secondary: #9ca3af;
-  --text-tertiary: #6b7280;
+  /* Theme Tokens mapped to requested palette */
+  --bg-primary: var(--primary);
+  --bg-secondary: var(--light-grey);
+  --bg-tertiary: var(--light-blue-bg);
 
-  --accent-cyan: #06b6d4;
-  --accent-purple: #8b5cf6;
-  --accent-gradient: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+  --text-primary: var(--text-color);
+  --text-secondary: #555555;
+  --text-tertiary: #777777;
 
-  --glass-bg: rgba(18, 18, 18, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.08);
+  --accent-cyan: #ff6faa;
+  --accent-purple: #b846ba;
+  --accent-gradient: linear-gradient(150deg, var(--gradient-color-1), var(--gradient-color-2) 41%, var(--gradient-color-3));
+
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(0, 0, 0, 0.08);
 
   --transition-fast: 0.2s ease;
   --transition-normal: 0.3s ease;
@@ -29,14 +44,29 @@
 
 html {
   scroll-behavior: smooth;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 body {
   font-family: 'Outfit', sans-serif;
-  background-color: var(--bg-primary);
+  background-color: var(--primary);
   color: var(--text-primary);
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
   line-height: 1.6;
+}
+
+#root, .app {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+img, video, canvas, svg {
+  max-width: 100%;
 }
 
 a {
@@ -49,7 +79,7 @@ ul {
 }
 
 .gradient-text {
-  background: var(--accent-gradient);
+  background: linear-gradient(150deg, var(--gradient-color-1), var(--gradient-color-2) 41%, var(--gradient-color-3));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

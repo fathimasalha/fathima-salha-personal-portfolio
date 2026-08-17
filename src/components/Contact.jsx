@@ -78,7 +78,7 @@ const Contact = () => {
                                 <div className="info-icon"><Mail size={20} /></div>
                                 <div>
                                     <h4>Email</h4>
-                                    <p>contact@fathimasalha.com</p>
+                                    <p><a href="mailto:fathimasalhank@gmail.com" style={{ color: 'inherit', textDecoration: 'none' }}>fathimasalhank@gmail.com</a></p>
                                 </div>
                             </div>
 
@@ -117,7 +117,7 @@ const Contact = () => {
                                     required
                                     value={formData.name}
                                     onChange={handleChange}
-                                    placeholder="John Doe"
+                                    placeholder="Enter your name"
                                 />
                             </div>
 
@@ -130,7 +130,7 @@ const Contact = () => {
                                     required
                                     value={formData.email}
                                     onChange={handleChange}
-                                    placeholder="john@example.com"
+                                    placeholder="Enter your email"
                                 />
                             </div>
 
@@ -143,7 +143,7 @@ const Contact = () => {
                                     rows="5"
                                     value={formData.message}
                                     onChange={handleChange}
-                                    placeholder="Tell me about your project..."
+                                    placeholder="Enter your message"
                                 ></textarea>
                             </div>
 

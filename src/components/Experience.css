@@ -1,6 +1,6 @@
 .experience-section {
     position: relative;
-    background: var(--bg-primary);
+    background: var(--primary);
     overflow: hidden;
     padding: 8rem 0;
 }
@@ -13,7 +13,7 @@
     right: -10%;
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(6, 182, 212, 0.05) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 111, 170, 0.08) 0%, transparent 70%);
     z-index: 0;
 }
 
@@ -24,7 +24,7 @@
     left: -10%;
     width: 300px;
     height: 300px;
-    background: radial-gradient(circle, rgba(139, 92, 246, 0.05) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(184, 70, 186, 0.08) 0%, transparent 70%);
     z-index: 0;
 }
 
@@ -38,7 +38,7 @@
 .experience-timeline {
     position: relative;
     padding-left: 3rem;
-    border-left: 2px solid var(--glass-border);
+    border-left: 2px solid rgba(0, 0, 0, 0.1);
 }
 
 .timeline-item {
@@ -52,29 +52,31 @@
     top: 0;
     width: 20px;
     height: 20px;
-    background: var(--bg-primary);
-    border: 3px solid var(--accent-cyan);
+    background: #ffffff;
+    border: 3px solid var(--secondary);
     border-radius: 50%;
-    box-shadow: 0 0 15px rgba(6, 182, 212, 0.5);
+    box-shadow: 0 0 15px rgba(253, 78, 205, 0.4);
     z-index: 2;
 }
 
 .timeline-content {
-    background: rgba(255, 255, 255, 0.02);
+    background: #ffffff;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
+    border: 1px solid rgba(0, 0, 0, 0.07);
     border-radius: 24px;
     padding: 2.5rem;
     transition: var(--transition-slow);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
 }
 
 .timeline-content:hover {
     transform: translateY(-5px);
-    border-color: rgba(6, 182, 212, 0.3);
-    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(253, 78, 205, 0.3);
+    background: #ffffff;
+    box-shadow: 0 15px 35px rgba(253, 78, 205, 0.08);
 }
 
 .timeline-content::after {
@@ -84,7 +86,7 @@
     right: 0;
     width: 150px;
     height: 150px;
-    background: radial-gradient(circle at top right, rgba(6, 182, 212, 0.05), transparent 70%);
+    background: radial-gradient(circle at top right, rgba(253, 78, 205, 0.08), transparent 70%);
     pointer-events: none;
 }
 
@@ -102,6 +104,7 @@
     font-weight: 800;
     margin-bottom: 0.5rem;
     letter-spacing: -0.02em;
+    color: var(--text-color);
 }
 
 .exp-role-badge {
@@ -109,12 +112,12 @@
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem 1.2rem;
-    background: var(--accent-gradient);
+    background: linear-gradient(150deg, var(--gradient-color-1), var(--gradient-color-2) 41%, var(--gradient-color-3));
     border-radius: 50px;
     font-size: 0.85rem;
     font-weight: 700;
     color: white;
-    box-shadow: 0 4px 15px rgba(6, 182, 212, 0.2);
+    box-shadow: 0 4px 15px rgba(184, 70, 186, 0.25);
 }
 
 .exp-time-location {
@@ -134,7 +137,7 @@
 }
 
 .exp-time-location i {
-    color: var(--accent-cyan);
+    color: var(--secondary);
 }
 
 .exp-description {
@@ -155,22 +158,23 @@
     display: flex;
     gap: 1rem;
     padding: 1rem;
-    background: rgba(255, 255, 255, 0.02);
+    background: var(--light-blue-bg);
     border-radius: 12px;
-    border: 1px solid transparent;
+    border: 1px solid rgba(0, 0, 0, 0.05);
     transition: var(--transition-normal);
 }
 
 .exp-task:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(6, 182, 212, 0.1);
+    background: #ffffff;
+    border-color: rgba(253, 78, 205, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
 }
 
 .task-icon {
     width: 24px;
     height: 24px;
-    background: rgba(6, 182, 212, 0.1);
-    color: var(--accent-cyan);
+    background: rgba(253, 78, 205, 0.1);
+    color: var(--secondary);
     display: flex;
     align-items: center;
     justify-content: center;

@@ -5,6 +5,27 @@ import './Projects.css';
 const Projects = () => {
     const projects = [
         {
+            title: "Asset Corp Solutions CRM & HRM",
+            description: "Enterprise CRM and HRM platform to manage customer leads, loan processing, employee records, attendance, leave, payroll, and role-based access control.",
+            techStack: ["Laravel (PHP)", "MySQL", "Tailwind CSS", "Blade", "Vite"],
+            liveLink: "https://apps.assetcorps.in/",
+            image: "/projects/apps-assetcorp.png"
+        },
+        {
+            title: "Asset Corp Solutions Advisory",
+            description: "Financial advisory website for Home, Car, Personal, & Business loans featuring 20+ calculators, automated SEO, and an integrated career portal.",
+            techStack: ["Laravel (PHP)", "MySQL", "Tailwind CSS", "Blade", "Vite"],
+            liveLink: "https://assetcorps.in/",
+            image: "/projects/asset-corp.png"
+        },
+        {
+            title: "Vishwadarshana Portal Hub",
+            description: "Centralized education portal for six institutions supporting online admissions, document verification, email notifications, and administrative tools.",
+            techStack: ["Custom PHP", "MySQL", "TCPDF", "PhpSpreadsheet", "PHPMailer"],
+            liveLink: "https://vishwadarshana.com/",
+            image: "/projects/vishwadarshana.png"
+        },
+        {
             title: "Jobby App",
             description: "A comprehensive job search platform allowing users to find, filter, and apply for jobs. Features user authentication, detailed job pages, and profile management.",
             techStack: ["React.js", "Navigation", "Authentication", "CSS"],
@@ -41,7 +62,7 @@ const Projects = () => {
                 >
                     <h2 className="section-title">Selected <span className="gradient-text">Projects</span></h2>
                     <p className="section-subtitle">
-                        A showcase of my recent work in frontend architecture and fullstack development.
+                        A showcase of my recent work in fullstack enterprise systems and modern web architecture.
                     </p>
                 </motion.div>
 
@@ -50,15 +71,23 @@ const Projects = () => {
                         <motion.div
                             key={index}
                             className="project-card glass-panel"
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: index * 0.2, duration: 0.5 }}
+                            transition={{ delay: index * 0.1, duration: 0.5 }}
                         >
                             <div className="project-image">
                                 <img src={project.image} alt={project.title} />
                                 <div className="project-overlay">
-                                    <div className="layer-icon"><ExternalLink size={32} /></div>
+                                    <a
+                                        href={project.liveLink}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="layer-icon"
+                                        aria-label="Live Demo"
+                                    >
+                                        <ExternalLink size={32} />
+                                    </a>
                                 </div>
                             </div>
 
@@ -73,12 +102,24 @@ const Projects = () => {
                                 </div>
 
                                 <div className="project-links">
-                                    <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="link-item live">
+                                    <a
+                                        href={project.liveLink}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="link-item live"
+                                    >
                                         <ExternalLink size={16} /> Live Demo
                                     </a>
-                                    <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="link-item code">
-                                        <Github size={16} /> View Code
-                                    </a>
+                                    {project.githubLink && (
+                                        <a
+                                            href={project.githubLink}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="link-item code"
+                                        >
+                                            <Github size={16} /> View Code
+                                        </a>
+                                    )}
                                 </div>
                             </div>
                         </motion.div>

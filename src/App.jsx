@@ -10,6 +10,8 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 import Experience from './components/Experience';
+import WhatsAppButton from './components/WhatsAppButton';
+import BackToTop from './components/BackToTop';
 
 function App() {
     return (
@@ -26,6 +28,8 @@ function App() {
                 <Contact />
             </main>
             <Footer />
+            <WhatsAppButton />
+            <BackToTop />
         </div>
     );
 }
